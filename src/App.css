@@ -1,0 +1,266 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Minimal Navbar */
+.app-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 36px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              color 0.2s ease, 
+              background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+  background: #eff6ff;
+  transform: scale(1.06) translateY(-1px);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background: #0f172a;
+  font-weight: 600;
+}
+
+.history-badge {
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link.active .history-badge {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Main Layout */
+.app-main {
+  flex: 1;
+  width: min(100%, 520px);
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+/* Bouncy History Cards Section */
+.history-section {
+  padding: 32px 28px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  animation: cardBounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.history-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #0f172a;
+}
+
+.clear-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.clear-btn:hover {
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+.empty-history {
+  text-align: center;
+  padding: 40px 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.primary-btn {
+  margin-top: 14px;
+  padding: 10px 20px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #2563eb;
+  transform: scale(1.06) translateY(-2px);
+}
+
+.history-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-card {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background-color 0.25s ease, 
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.history-card:hover {
+  background: #ffffff;
+  border-color: #2563eb;
+  transform: scale(1.03) translateX(4px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+}
+
+.location-icon {
+  margin-right: 12px;
+  font-size: 16px;
+  color: #64748b;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.history-card:hover .location-icon {
+  transform: scale(1.3);
+}
+
+.city-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  flex: 1;
+  transition: color 0.25s ease;
+}
+
+.history-card:hover .city-name {
+  color: #2563eb;
+}
+
+.action-hint {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.history-card:hover .action-hint {
+  color: #2563eb;
+  transform: translateX(2px);
+}
+
+/* Glassmorphic Minimal Footer */
+.glass-footer {
+  text-align: center;
+  padding: 24px 16px;
+  margin-top: auto;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.footer-subtext {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+@keyframes cardBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .app-navbar { padding: 12px 20px; }
+  .app-main { margin: 24px auto; }
+}
