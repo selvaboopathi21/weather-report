@@ -35,7 +35,6 @@ function Weather({ onSearchSuccess, selectedCity }) {
     }
   };
 
-  // Trigger search if a city was selected from the History section
   useEffect(() => {
     if (selectedCity) {
       setCityInput(selectedCity);
@@ -57,12 +56,14 @@ function Weather({ onSearchSuccess, selectedCity }) {
   };
 
   return (
-    <section className="weather-container">
-      <div className="weather-header-box">
+    <div className="weather-wrapper-card">
+      {/* Header Info */}
+      <div className="weather-header-info">
         <h1>Weather Report</h1>
         <p>What climate do you want to know today?</p>
       </div>
 
+      {/* Form Input + Button */}
       <form className="weather-search-form" onSubmit={handleSearch}>
         <input
           type="text"
@@ -76,14 +77,16 @@ function Weather({ onSearchSuccess, selectedCity }) {
         </button>
       </form>
 
+      {/* Error Message */}
       {errorMessage && (
         <div className="weather-error" role="alert">
           {errorMessage}
         </div>
       )}
 
+      {/* Weather Result Section */}
       {weatherData && !errorMessage && (
-        <article className="weather-card">
+        <article className="weather-result-box">
           <h2 className="weather-location">
             {weatherData.name}, {weatherData.sys.country}
           </h2>
@@ -112,7 +115,7 @@ function Weather({ onSearchSuccess, selectedCity }) {
           </ul>
         </article>
       )}
-    </section>
+    </div>
   );
 }
 

@@ -28,8 +28,8 @@ function App() {
       {/* Navbar Navigation */}
       <header className="app-navbar">
         <div className="navbar-logo" onClick={() => setActiveTab('home')} style={{ cursor: 'pointer' }}>
-          <span className="logo-icon">☀️</span>
-          <span className="logo-text">WeatherPulse</span>
+          <span className="logo-icon"></span>
+          <span className="logo-text">Weather Report</span>
         </div>
         <nav className="navbar-links">
           <button 

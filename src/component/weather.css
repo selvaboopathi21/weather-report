@@ -1,55 +1,58 @@
-.weather-container {
+/* Single Main Unified Card */
+.weather-wrapper-card {
   width: 100%;
-}
-
-/* Header Box with Bouncy Hover & Soft Accent Color Change */
-.weather-header-box {
-  text-align: center;
-  padding: 28px 20px;
-  margin-bottom: 24px;
+  padding: 36px 32px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-  /* Cubic-bezier creates the spring/bounce effect */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease,
-              background-color 0.3s ease;
+              box-shadow 0.3s ease, 
+              border-color 0.3s ease;
 }
 
-.weather-header-box:hover {
-  transform: scale(1.03) translateY(-2px);
+.weather-wrapper-card:hover {
+  transform: scale(1.02) translateY(-3px);
   border-color: #cbd5e1;
-  background-color: #f8fafc;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
-.weather-header-box h1 {
+/* Header Text Inside Card */
+.weather-header-info {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.weather-header-info h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #0f172a;
-  transition: color 0.3s ease;
+  color: #2563eb;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.weather-header-box:hover h1 {
-  color: #2563eb; /* Color shift on hover */
+.weather-wrapper-card:hover .weather-header-info h1 {
+  transform: scale(1.03);
 }
 
-.weather-header-box p {
-  margin: 6px 0 0;
+.weather-header-info p {
+  margin: 8px 0 0;
   font-size: 14px;
   color: #64748b;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-/* Search Form */
+/* Integrated Search Form */
 .weather-search-form {
   display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.weather-wrapper-card:has(.weather-result-box) .weather-search-form,
+.weather-wrapper-card:has(.weather-error) .weather-search-form {
+  margin-bottom: 28px;
 }
 
 .weather-input {
@@ -58,9 +61,9 @@
   font-size: 14px;
   font-family: inherit;
   color: #0f172a;
-  background: #ffffff;
+  background: #f8fafc;
   border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  border-radius: 12px;
   outline: none;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -70,21 +73,22 @@
 }
 
 .weather-input:focus {
+  background: #ffffff;
   border-color: #2563eb;
   transform: scale(1.02);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
-/* Button with Bouncy Hover & Color Shift */
+/* Bouncy Button */
 .weather-button {
-  padding: 0 24px;
+  padding: 0 26px;
   font-size: 14px;
   font-weight: 600;
   font-family: inherit;
   color: #ffffff;
   background: #0f172a;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
               background-color 0.25s ease, 
@@ -92,7 +96,7 @@
 }
 
 .weather-button:hover:not(:disabled) {
-  background: #2563eb; /* Accent blue on hover */
+  background: #2563eb;
   transform: scale(1.08) translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
@@ -101,10 +105,9 @@
   transform: scale(0.95);
 }
 
-/* Error Alert */
+/* Error Message inside the same card */
 .weather-error {
-  padding: 14px 16px;
-  margin-bottom: 24px;
+  padding: 12px 16px;
   color: #991b1b;
   background: #fef2f2;
   border: 1px solid #fecaca;
@@ -115,24 +118,12 @@
   animation: bounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Weather Card with Bouncy Spring Effect */
-.weather-card {
+/* Result Output Block */
+.weather-result-box {
   text-align: center;
-  padding: 36px 28px 28px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  animation: cardBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease;
-}
-
-.weather-card:hover {
-  transform: scale(1.03) translateY(-4px);
-  border-color: #2563eb;
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+  animation: cardBounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .weather-location {
@@ -140,17 +131,11 @@
   font-size: 18px;
   font-weight: 600;
   color: #475569;
-  letter-spacing: -0.2px;
-  transition: color 0.3s ease;
-}
-
-.weather-card:hover .weather-location {
-  color: #1e293b;
 }
 
 .weather-temp {
   margin: 10px 0 0;
-  font-size: 72px;
+  font-size: 68px;
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -3px;
@@ -158,20 +143,19 @@
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
 }
 
-.weather-card:hover .weather-temp {
-  transform: scale(1.05);
+.weather-wrapper-card:hover .weather-temp {
   color: #2563eb;
 }
 
 .weather-description {
-  margin: 12px 0 32px;
+  margin: 8px 0 24px;
   font-size: 14px;
   font-weight: 500;
   color: #64748b;
   text-transform: capitalize;
 }
 
-/* Metric Boxes with Individual Bounce & Color Shift */
+/* Metric Grid */
 .weather-details-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -185,7 +169,7 @@
   padding: 16px 8px;
   background: #f8fafc;
   border: 1px solid #f1f5f9;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -208,7 +192,6 @@
   color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: color 0.25s ease;
 }
 
 .weather-details-grid li:hover span {
@@ -221,14 +204,11 @@
   color: #0f172a;
 }
 
-/* Entry Bounce Keyframes */
+/* Keyframes */
 @keyframes cardBounceIn {
   0% {
     opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  70% {
-    transform: scale(1.02) translateY(-4px);
+    transform: scale(0.95) translateY(10px);
   }
   100% {
     opacity: 1;
@@ -243,6 +223,10 @@
 }
 
 @media (max-width: 480px) {
+  .weather-wrapper-card {
+    padding: 24px 18px;
+  }
+  
   .weather-search-form {
     flex-direction: column;
   }
@@ -252,7 +236,7 @@
   }
 
   .weather-temp {
-    font-size: 56px;
+    font-size: 52px;
   }
   
   .weather-details-grid {
