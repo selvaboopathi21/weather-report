@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './weather.css';
 
-const API_KEY = 'dfc5645e40f7008439c71cec957922a7'; 
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 function Weather({ onSearchSuccess, selectedCity }) {

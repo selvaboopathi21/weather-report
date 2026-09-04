@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { WeatherContext } from './WeatherContext';
 
-const API_KEY = 'dfc5645e40f7008439c71cec957922a7';
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
 export function WeatherProvider({ children }) {
   const [cityInput, setCityInput] = useState('');
